@@ -75,8 +75,7 @@ class LearningAgent(Agent):
         # With the hand-engineered features, this learning process gets entirely negated.
 
         # Set 'state' as a tuple of relevant data for the agent
-        state = (waypoint, inputs["light"], inputs["left"],
-                 inputs["right"], inputs["oncoming"])
+        state = (waypoint, inputs["light"], inputs["left"], inputs["oncoming"])
 
         return state
 
@@ -88,11 +87,7 @@ class LearningAgent(Agent):
         ## TO DO ##
         ###########
         # Calculate the maximum Q-value of all actions for a given state
-
-        maxQ = None
-        for act in self.Q[state]:
-            if(self.Q[state][act] > maxQ):
-                maxQ = self.Q[state][act]
+        maxQ = max(self.Q[state].values())
 
         return maxQ
 
